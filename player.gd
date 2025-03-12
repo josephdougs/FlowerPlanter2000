@@ -14,11 +14,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(delta)
 	if Input.is_action_pressed("up"):
-		position.z += (MOVE_AMOUNT * delta)
+		position.z += (MOVE_AMOUNT * delta) * cos(rotation.y)
+		position.x += (MOVE_AMOUNT * delta) * sin(rotation.y)
 	if Input.is_action_pressed("down"):
-		position.z -= (MOVE_AMOUNT * delta)
+		position.z -= (MOVE_AMOUNT * delta) * cos(rotation.y)
+		position.x -= (MOVE_AMOUNT * delta) * sin(rotation.y)
 	if Input.is_action_pressed("left"):
 		rotation.y += (ROTATE_AMOUNT * delta)
 	if Input.is_action_pressed("right"):
