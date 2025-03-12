@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bjfvfvc5q5kuh" path="res://player.tscn" id="3_y74aq"]
 [ext_resource type="Script" uid="uid://4i8fukkwfckw" path="res://player.gd" id="4_8612p"]
 [ext_resource type="Script" uid="uid://c34h5iyivu2fn" path="res://flower.gd" id="4_yfmy1"]
+[ext_resource type="Texture2D" uid="uid://diohti25xso4u" path="res://flowerimages/bitterroot.png" id="5_nfk4m"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0onmj"]
 panorama = ExtResource("1_atfqs")
@@ -26,8 +27,6 @@ size = Vector3(200, 1, 200)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gw8l3"]
 size = Vector3(200, 1, 200)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_6xckt"]
-
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -47,11 +46,14 @@ mesh = SubResource("BoxMesh_0toqp")
 transform = Transform3D(1.00066, 0, 0, 0, 1.00066, 0, 0, 0, 1.00066, 0, 0, 0)
 shape = SubResource("BoxShape3D_gw8l3")
 
-[node name="Flower" type="MeshInstance3D" parent="Ground"]
+[node name="Flower" type="Sprite3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69584, 0.841778, 0)
 visible = false
-skeleton = NodePath("../..")
+pixel_size = 0.0015
+billboard = 2
+transparent = false
+texture = ExtResource("5_nfk4m")
 script = ExtResource("4_yfmy1")
-the_mesh = SubResource("CylinderMesh_6xckt")
 
 [node name="player" parent="." instance=ExtResource("3_y74aq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

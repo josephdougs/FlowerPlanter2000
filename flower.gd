@@ -1,19 +1,31 @@
-extends MeshInstance3D
+extends Sprite3D
 
-@export var the_mesh: Mesh
+var flowers: Array
+
+var is_rising = false
+var RISE_AMOUNT = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.mesh = the_mesh
-	print(position)
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if (is_rising):
+		do_rise(delta)
+
+func plant_flower(flower_files: Array):
+	position.y = -2
+	pick_new_flower_image(flower_files)
+	is_rising = true
 	
-func clone() -> MeshInstance3D:
-	var new_mesh = MeshInstance3D.new()
-	new_mesh.mesh = the_mesh
-	return new_mesh
+func do_rise(delta):
+	if (position.y >= 0.5):
+		is_rising = false
+		return
+	position.y += (delta * RISE_AMOUNT)
+	
+func pick_new_flower_image(flower_files: Array):
+	var file = flower_files.pick_random()
+	texture = load("res://flowerimages/" + file)
