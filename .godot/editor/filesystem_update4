@@ -3,3 +3,5 @@ res://grass.tres
 res://flower.gd
 res://player.tscn
 res://ground_collision.gd
+res://player_sprite_frames.tres
+res://player.gd

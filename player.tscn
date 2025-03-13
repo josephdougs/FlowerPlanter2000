@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjfvfvc5q5kuh"]
 
 [ext_resource type="Texture2D" uid="uid://dotxi47vsrby2" path="res://icon.svg" id="1_lf32k"]
+[ext_resource type="SpriteFrames" uid="uid://gk06wquf2fk5" path="res://player_sprite_frames.tres" id="2_onrkg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_um51t"]
 albedo_texture = ExtResource("1_lf32k")
@@ -9,17 +10,19 @@ uv1_triplanar_sharpness = 3.09261
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_t80eg"]
 material = SubResource("StandardMaterial3D_um51t")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_df300"]
-
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, -3.69464e-08, 7.9232e-08, 0, 0.906308, 0.422618, -8.74228e-08, 0.422618, -0.906308, 0, 5, -5)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 3.55271e-15, 0, -3.55271e-15, 1, 0, 0, 0, 1, -5.68434e-14, 0, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_t80eg")
+skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-shape = SubResource("CapsuleShape3D_df300")
+[node name="playeranim" type="AnimatedSprite3D" parent="."]
+cast_shadow = 0
+transparent = false
+sprite_frames = ExtResource("2_onrkg")
+animation = &"running"
