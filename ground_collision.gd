@@ -11,15 +11,12 @@ func _ready() -> void:
 	
 	
 func get_flower_files():
-	var dir = DirAccess.open("res://flowerimages")
+	var dir = ResourceLoader.list_directory("res://flowerimages")
 	var flower_files: Array = []
 	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
+		for file_name in dir:
 			if file_name.ends_with(".png"):
 				flower_files.append(file_name)
-			file_name = dir.get_next()
 			
 	else:
 		print("An error occurred when trying to access the path.")

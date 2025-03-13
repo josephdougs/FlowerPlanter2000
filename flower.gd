@@ -27,5 +27,6 @@ func do_rise(delta):
 	position.y += (delta * RISE_AMOUNT)
 	
 func pick_new_flower_image(flower_files: Array):
+	print_debug(flower_files)
 	var file = flower_files.pick_random()
 	texture = load("res://flowerimages/" + file)

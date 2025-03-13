@@ -1,5 +1,5 @@
 res://main_scene.tscn
 res://grass.tres
+res://flower.gd
 res://player.tscn
 res://ground_collision.gd
-res://flower.gd
